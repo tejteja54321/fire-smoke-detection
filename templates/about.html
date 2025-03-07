@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <title>Fire & Smoke Detector</title>
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+     <link rel="stylesheet" href="../static/css/bootstrap.min.css">
+     <link rel="stylesheet" href="../static/css/font-awesome.min.css">
+     <link rel="stylesheet" href="../static/css/animate.css">
+     <link rel="stylesheet" href="../static/css/owl.carousel.css">
+     <link rel="stylesheet" href="../static/css/owl.theme.default.min.css">
+     <link rel="stylesheet" href="../static/css/magnific-popup.css">
+     <link rel="stylesheet" href="../static/css/templatemo-style-2.css">
+</head>
+<body>
+     <!-- PRE LOADER -->
+     <section class="preloader">
+          <div class="spinner">
+               <span class="spinner-rotate"></span>
+          </div>
+     </section>
+
+     <!-- MENU -->
+     <section class="navbar custom-navbar navbar-fixed-top" role="navigation">
+          <div class="container">
+               <div class="navbar-header">
+                    <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                         <span class="icon icon-bar"></span>
+                         <span class="icon icon-bar"></span>
+                         <span class="icon icon-bar"></span>
+                    </button>
+                    <a href="/" class="navbar-brand">Fire <span>&</span> Smoke Detector</a>
+               </div>
+               <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav navbar-nav-first">
+                         <li><a href="#home" class="smoothScroll">Upload</a></li>
+                         <li><a href="/live_video" class="smoothScroll">Live Camera</a></li>
+                         <li><a href="#features" class="smoothScroll">Performance</a></li>
+                         <li><a href="#footer" class="smoothScroll">Charts</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                         <a href="/logout" class="section-btn">LogOut</a>
+                    </ul>
+               </div>
+          </div>
+     </section>
+
+      <!-- HOME -->
+      <section id="home" class="slider" data-stellar-background-ratio="0.5">
+        <div class="row">
+            <div class="owl-carousel owl-theme">
+                <div class="item item-first">
+                    <video autoplay loop muted playsinline class="bg-video">
+                        <source src="../static/images/v2.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <div class="caption">
+                        <div class="container">
+                            <div class="col-md-8 col-sm-12">
+                                <h3>AI-Powered Fire & Smoke Detection</h3>
+                                <h1>You Can Upload Image/Video for Real-Time Detection</h1>
+                               
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+     <!-- TEAM -->
+     <section id="team" data-stellar-background-ratio="0.5">
+          <div class="container ">
+               <div class="row">
+
+                    <div class="col-md-12 col-sm-12">
+                         <div class="section-title wow fadeInUp" data-wow-delay="0.1s">
+                             <h2>Upload here</h2>
+                             <h4>Choose Image | Video</h4>
+                         </div>
+                     
+                         <form id="mc-form" class="mc-form" action="/upload" method="post" enctype="multipart/form-data">
+                              <input type="file" name="file" id="mce-EMAIL" class="u-fullwidth text-center" accept="file"  required>
+                              <input type="submit" name="subscribe" value="Submit" class="btn--small btn--primary u-fullwidth">
+                              
+                              
+                          </form>
+                    {% if original_file or result_file %}
+
+                    <div class="col-md-6 col-sm-12">
+                         {% if original_file.endswith(('mp4', 'avi', 'mov', 'mkv')) %}
+                         <div class="team-thumb wow fadeInUp" data-wow-delay="0.2s">
+                              <video width="100%" controls autoplay loop muted>
+                                   <source src="{{ url_for('uploaded_file', filename=original_file) }}" type="video/mp4">
+                                   Your browser does not support the video tag.
+                               </video>
+                                   
+                         </div>
+                         <div class="team-info">
+                              <h3>Uploaded Video</h3>
+                         </div>
+                         {% else %}
+                         <div class="team-thumb wow fadeInUp" data-wow-delay="0.2s">
+                              
+                              <img src="{{ url_for('uploaded_file', filename=original_file) }}" class="img-fluid product-image img-responsive" alt="Uploaded Image">
+                                   
+                         </div>
+                         <div class="team-info">
+                              <h3>Uploaded Image</h3>
+                         </div>
+
+                         {% endif %}
+                    </div>
+
+                    <div class="col-md-6 col-sm-12">
+                         {% if result_file %}
+                         <div class="team-thumb wow fadeInUp" data-wow-delay="0.4s">
+                              <img src="{{ url_for('result_file', filename=result_file) }}" class="img-fluid product-image img-responsive" alt="Resultant Image">
+                                  
+                         </div>
+                         <div class="team-info">
+                              <h3>Detections on Image</h3>
+                         </div>
+
+                         {% elif result_video %}
+                         <div class="team-thumb wow fadeInUp" data-wow-delay="0.4s">
+                              <video width="100%" controls autoplay loop muted>
+                                   <source src="{{ url_for('result_video', filename=result_video) }}" type="video/mp4">
+                                   Your browser does not support the video tag.
+                               </video>
+                                   
+                         </div>
+                         <div class="team-info">
+                              <h3>Detections on Image</h3>
+                         </div>
+                         {% endif %}
+                    </div>
+
+                    {% endif %}
+          </div>
+     </section>
+
+
+
+
+     <!-- FOOTER -->
+     <footer id="footer" data-stellar-background-ratio="0.5">
+        <div class="container">
+             <div class="row">
+                  <p>All rights reserved &copy; Fire & Smoke Detection System</p>
+             </div>
+        </div>
+   </footer>
+
+
+     <!-- SCRIPTS -->
+     <script src="../static/js/jquery.js"></script>
+     <script src="../static/js/bootstrap.min.js"></script>
+     <script src="../static/js/jquery.stellar.min.js"></script>
+     <script src="../static/js/wow.min.js"></script>
+     <script src="../static/js/owl.carousel.min.js"></script>
+     <script src="../static/js/jquery.magnific-popup.min.js"></script>
+     <script src="../static/js/smoothscroll.js"></script>
+     <script src="../static/js/custom.js"></script>
+
+</body>
+</html>

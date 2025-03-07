@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Fire & Smoke Detector</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../static/css/animate.css">
+    <link rel="stylesheet" href="../static/css/owl.carousel.css">
+    <link rel="stylesheet" href="../static/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="../static/css/magnific-popup.css">
+    <link rel="stylesheet" href="../static/css/templatemo-style-2.css">
+    <style>
+        .detection-section {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        .detection-box {
+            width: 48%;
+            background: #fff;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+        .detection-box img, .detection-box video {
+            width: 100%;
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+        .custom-file-upload, button {
+            padding: 10px 15px;
+            background-color: #ff5722;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .custom-file-upload:hover, button:hover {
+            background-color: #e64a19;
+        }
+        #detection {
+    background: url("../static/images/vec3.jpg") no-repeat center center;
+    background-size: cover;
+    padding: 60px 0;
+    color: white; /* Ensuring text is visible */
+}
+
+.detection-box {
+    background: rgba(0, 0, 0, 0.6); /* Semi-transparent background */
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+    </style>
+</head>
+<body>
+
+    <!-- PRE LOADER -->
+    <section class="preloader">
+        <div class="spinner">
+            <span class="spinner-rotate"></span>
+        </div>
+    </section>
+
+    <!-- MENU -->
+    <section class="navbar custom-navbar navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon icon-bar"></span>
+                    <span class="icon icon-bar"></span>
+                    <span class="icon icon-bar"></span>
+                </button>
+                <a href="/" class="navbar-brand">Fire <span>&</span> Smoke Detector</a>
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav navbar-nav-first">
+                    <li><a href="/about" class="smoothScroll">Upload</a></li>
+                    <li><a href="/live_video" class="smoothScroll">Live Camera</a></li>
+                    <li><a href="/performance" class="smoothScroll">Performance</a></li>
+                    <li><a href="charts" class="smoothScroll">Charts</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <a href="/logout" class="section-btn">LogOut</a>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- HOME -->
+    <section id="home" class="slider" data-stellar-background-ratio="0.5">
+        <div class="row">
+            <div class="owl-carousel owl-theme">
+                <div class="item item-first">
+                    <video autoplay loop muted playsinline class="bg-video">
+                        <source src="../static/images/v2.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <div class="caption">
+                        <div class="container">
+                            <div class="col-md-8 col-sm-12">
+                                <h3>AI-Powered Fire & Smoke Detection</h3>
+                                <h1>Enhancing Safety with Real-Time Detection</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DETECTION SECTIONS -->
+    <section id="detection" data-stellar-background-ratio="0.5">
+        <div class="container">
+            <div class="row">
+                <h2 class="text-center" >Live Detection & Video Analysis</h2>
+
+                <div class="detection-section">
+                    
+                    <!-- Uploaded Video Detection -->
+                    <div class="detection-box">
+                        <h3 style="color:white;">Upload a Video for Fire & Smoke Detection</h3>
+                        <form action="{{ url_for('upload_video') }}" method="post" enctype="multipart/form-data">
+                            <label for="file-upload" class="custom-file-upload">Choose a Video</label>
+                            <input id="file-upload" type="file" name="file" accept="video/*" required>
+                            <br>
+                            <button type="submit">Upload & Start Detection</button>
+                        </form>
+                        <br>
+                        <h4>Detection Output</h4>
+                        <img id="video-feed" src="{{ url_for('video_feed2') }}" alt="Live Detection Stream">
+                    </div>
+
+                    <!-- Live Camera Detection -->
+                    <div class="detection-box">
+                        <h3 style="color:white;">Live Camera Fire & Smoke Detection</h3>
+                        <div>
+                            <button id="start-btn">Start Camera</button>
+                            <button id="stop-btn" style="display: none;">Stop Camera</button>
+                        </div>
+                        <br>
+                        <h4>Live Camera Feed</h4>
+                        <img id="video" src="" alt="Camera Feed">
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer id="footer" data-stellar-background-ratio="0.5">
+        <div class="container">
+            <div class="row">
+                <p>All rights reserved &copy; Fire & Smoke Detection System</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- SCRIPTS -->
+    <script src="../static/js/jquery.js"></script>
+    <script src="../static/js/bootstrap.min.js"></script>
+    <script src="../static/js/jquery.stellar.min.js"></script>
+    <script src="../static/js/wow.min.js"></script>
+    <script src="../static/js/owl.carousel.min.js"></script>
+    <script src="../static/js/jquery.magnific-popup.min.js"></script>
+    <script src="../static/js/smoothscroll.js"></script>
+    <script src="../static/js/custom.js"></script>
+    <script>
+        const startButton = document.getElementById('start-btn');
+        const stopButton = document.getElementById('stop-btn');
+        const videoElement = document.getElementById('video');
+
+        // Function to start camera
+        startButton.addEventListener('click', () => {
+            startButton.style.display = 'none';
+            stopButton.style.display = 'inline-block';
+            videoElement.style.display = 'block';
+
+            // Start streaming the video
+            videoElement.src = "{{ url_for('video_feed') }}";
+        });
+
+        // Function to stop camera
+        stopButton.addEventListener('click', async () => {
+            startButton.style.display = 'inline-block';
+            stopButton.style.display = 'none';
+            videoElement.style.display = 'none';
+
+            // Send a request to stop the camera on the backend
+            await fetch('/close_camera', { method: 'POST' });
+            videoElement.src = ''; // Stop the video feed
+        });
+    </script>
+
+</body>
+</html>
