@@ -73,3 +73,5 @@ Contributions are welcome! Feel free to fork this repo and submit a pull request
 
 ✅ Done!
 🔗 **Project Repository:** [Fire & Smoke Detection](https://github.com/tejteja54321/fire-smoke-detection)
+
+**NOTE:** I Haven't uploaded dataset due to size limit if you need dataset please feel free to send mail and send message in LinkedIn
