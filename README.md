@@ -15,13 +15,12 @@ This project is an AI-powered Fire & Smoke Detection System built with Flask and
 - fire-smoke-detection/
 - │── static/               # CSS, JS, images
 - │── templates/            # HTML files (Flask frontend)
-- │── uploads/              # Uploaded images/videos
-- │── models/               # YOLOv10n model files
+- │── yolov10n.pt/          # YOLOv10n pretrained model file
 - │── app.py                # Main Flask application
 - │── requirements.txt      # Python dependencies
 - │── README.md             # Project Documentation
-- │── config.py             # Configuration settings
-- │── utils.py              # Utility functions
+- |── yolov10.ipynb         # Jupyter Notebook Training File
+- |── runs/                 # Training Results
 ## ⚙ Installation & Setup
 - 🔹 Step 1: Clone the Repository
 git clone https://github.com/YOUR_USERNAME/fire-smoke-detection.git
@@ -44,8 +43,11 @@ python app.py
 - 5️⃣ View Performance & Charts – Check detection accuracy and statistics.
 
 ## 🖥 Screenshots
-Home Page	Uploads Page
-Live Detection	Charts Page
+Home Page	
+LogIn& Register Pages
+Uploads Page
+Live Detection	
+Charts & Performance Page
 ## 🤖 Technology Stack
 - Backend: Flask (Python)
 - Frontend: HTML, CSS, JavaScript
