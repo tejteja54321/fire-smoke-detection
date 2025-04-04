@@ -27,8 +27,8 @@ app.config['RESULTS_FOLDER'] = RESULTS_FOLDER
 
 users = {}
 
-model = YOLO(r'F:/TEJA/NLP/PROJ14/runs/detect/train3/weights/best.pt')
-
+#model = YOLO(r'F:/TEJA/NLP/PROJ14/runs/detect/train3/weights/best.pt')
+model=YOLO(r'F:/TEJA/NLP/PROJ14/runs/detect/train/weights/best.pt')
 
 
 # Home Page
@@ -83,20 +83,6 @@ def register():
 
 
 
-# # Detection Page After Login
-# @app.route('/image')
-# def image():
-#     if 'user' in session:
-#         return render_template('image.html', user=session['user'])
-#     return redirect(url_for('login'))
-
-
-
-@app.route("/result")
-def result():
-    if 'user' in session:
-        return render_template('result.html', user=session['user'])
-    return redirect(url_for('login'))
 
 
 
