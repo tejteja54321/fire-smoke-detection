@@ -132,6 +132,7 @@
                             <input id="file-upload" type="file" name="file" accept="video/*" required>
                             <br>
                             <button type="submit">Upload & Start Detection</button>
+                            <button type="button" onclick="stopVideo()">Stop Detection</button>
                         </form>
                         <br>
                         <h4>Detection Output</h4>
@@ -198,6 +199,14 @@
             await fetch('/close_camera', { method: 'POST' });
             videoElement.src = ''; // Stop the video feed
         });
+        function stopVideo() {
+        fetch('/stop_video', {
+            method: 'POST'
+        }).then(() => {
+            alert('Detection stopped.');
+            document.getElementById("video-feed").src = ""; // Optionally clear the image
+        });
+    }
     </script>
 
 </body>
